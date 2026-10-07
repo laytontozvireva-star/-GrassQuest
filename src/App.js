@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import heroImage from "./assets/hero.jpg";
 
 // Dynamic API URL for local development and deployed environments
 const API_BASE_URL =
@@ -693,9 +694,9 @@ function App() {
             {/* Background public image with overlay */}
             <div className="absolute inset-0 z-0">
               <img
-                src="/hero.jpg"
+                src={heroImage}
                 alt="GrassQuest Outdoor Nature Banner"
-                className="h-full w-full object-cover opacity-25"
+                className="h-full w-full object-cover opacity-30"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1F2D24] via-[#1F2D24]/80 to-transparent" />
             </div>
@@ -862,25 +863,35 @@ function App() {
             {result?.success && result.mission && (
               <div className="mt-10 overflow-hidden rounded-3xl bg-white shadow-xl border border-emerald-900/10 animate-fade-in">
                 {/* CARD HEADER */}
-                <div className="relative bg-[#2F6B45] p-8 text-white">
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex rounded-full bg-white/20 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-emerald-100 backdrop-blur-md">
-                      🌿 Outdoor Mission Ready
-                    </span>
-                    <span className="text-sm font-bold bg-black/20 px-3 py-1 rounded-full text-emerald-100">
-                      ⏱️ {result.mission.duration}
-                    </span>
+                <div className="relative overflow-hidden bg-[#2F6B45] p-8 text-white">
+                  <div className="absolute inset-0 z-0">
+                    <img
+                      src={heroImage}
+                      alt="Nature background"
+                      className="h-full w-full object-cover opacity-20"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#2F6B45] via-[#2F6B45]/90 to-transparent" />
                   </div>
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex rounded-full bg-white/20 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-emerald-100 backdrop-blur-md">
+                        🌿 Outdoor Mission Ready
+                      </span>
+                      <span className="text-sm font-bold bg-black/20 px-3 py-1 rounded-full text-emerald-100">
+                        ⏱️ {result.mission.duration}
+                      </span>
+                    </div>
 
-                  <h3 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight">
-                    {result.mission.title}
-                  </h3>
+                    <h3 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight">
+                      {result.mission.title}
+                    </h3>
 
-                  {result.isFallback && (
-                    <p className="mt-2 text-xs text-emerald-200 bg-emerald-900/40 inline-block px-3 py-1 rounded-lg">
-                      ✨ Generated via GrassQuest Engine
-                    </p>
-                  )}
+                    {result.isFallback && (
+                      <p className="mt-2 text-xs text-emerald-200 bg-emerald-900/40 inline-block px-3 py-1 rounded-lg">
+                        ✨ Generated via GrassQuest Engine
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 {/* CARD CONTENT */}
